@@ -1,0 +1,12 @@
+email_text,url
+"Your account has been suspended. Click to verify ASAP. Confirm identity now.","https://secure-verify.org/login"
+"Please verify your payment details to avoid service disruption immediately!","https://billing-confirmation.com/payment-confirm"
+"We detected unusual activity. Confirm your identity immediately. New device sign-in.","https://verify-now.xyz/verify-account"
+"Action required: confirm your billing information. Limited time offer!","http://secure-payments.rapid-reward.club/billing"
+"Security alert: your password may have been compromised. Update your account now.","http://account-update.fakebank.com/auth"
+"Your invoice is ready. Review and confirm payment within 24 hours.","https://login-security.com/invoice/confirm"
+"Meeting reminder: Tomorrow at 3:15. Your subscription updates are ready.","https://www.example.com/news"
+"Hi Daniel Harris, here are your recent updates. Appointment reminder included.","https://company.com/calendar"
+"Account notice: changes to your settings were successful. No action required.","https://account-portal.com/account"
+"Security tip: review your login activity in the dashboard (no suspicious activity detected).","https://service-portal.org/dashboard"
+

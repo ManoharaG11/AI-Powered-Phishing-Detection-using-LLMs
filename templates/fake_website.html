@@ -1,0 +1,30 @@
+<!-- templates/fake_website.html -->
+{% extends "base.html" %}
+
+{% block title %}Fake Website Detection — AI Phishing Detector{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Fake Website Detection</h1>
+    <p>Paste a suspicious URL. The system will analyze URL patterns + ML signals to produce a phishing risk score.</p>
+  </div>
+
+  <div class="nav-back">
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+  </div>
+
+  <form action="{{ url_for('analyze') }}" method="post" class="form-card">
+    <input type="hidden" name="mode" value="website" />
+
+    <label>Website URL (paste the suspicious URL):</label>
+    <input type="text" name="url" placeholder="https://example.com/login">
+
+    <div class="hint">
+      <strong>Tip:</strong> Watch for long paths, unusual subdomains, IP-based URLs, and shortened links.
+    </div>
+
+    <button type="submit" class="btn">Analyze Fake Website</button>
+  </form>
+{% endblock %}
+
+

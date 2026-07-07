@@ -1,0 +1,32 @@
+<!-- templates/fake_email.html -->
+{% extends "base.html" %}
+
+{% block title %}Fake Email Detection — AI Phishing Detector{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Fake Email Detection</h1>
+    <p>Paste the email content and (optionally) the sender + raw headers. The system will extract signals and classify the message.</p>
+  </div>
+
+  <div class="nav-back">
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+  </div>
+
+  <form action="{{ url_for('analyze') }}" method="post" class="form-card">
+    <input type="hidden" name="mode" value="email" />
+
+    <label>Email text (paste the email body):</label>
+    <textarea name="email_text" rows="9" placeholder="Paste the email content here..."></textarea>
+
+    <label>Sender email address (optional):</label>
+    <input type="text" name="sender" placeholder="alert@bank-example.com">
+
+    <label>Raw email header (optional, for IP extraction)</label>
+    <textarea name="raw_header" rows="5" placeholder="Paste full raw email headers here..."></textarea>
+
+    <button type="submit" class="btn">Analyze Fake Email</button>
+  </form>
+{% endblock %}
+
+

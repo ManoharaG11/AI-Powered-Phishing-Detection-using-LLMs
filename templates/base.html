@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}AI Phishing Detector{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body class="{{ request.path.strip('/') or 'home' }}">
+    <div class="container">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <h1 class="site-title">AI Phishing Detection</h1>
+          <p class="site-subtitle">Detect phishing emails, malicious URLs and suspicious senders — fast and accurate.</p>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+          <a class="nav-link" href="{{ url_for('fake_email') }}">Fake Email</a>
+          <a class="nav-link" href="{{ url_for('fake_website') }}">Fake Website</a>
+        </nav>
+      </header>
+
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="site-footer">
+        <small>Developed by Manoahar G</small>
+      </footer>
+    </div>
+
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
+

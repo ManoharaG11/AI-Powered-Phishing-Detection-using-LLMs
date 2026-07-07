@@ -1,0 +1,13 @@
+<!-- templates/error.html -->
+{% extends "base.html" %}
+
+{% block title %}Error — AI Phishing Detector{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Error</h1>
+    <p>An error occurred. Please try again.</p>
+  </div>
+  <a href="{{ url_for('index') }}" class="btn">Home</a>
+{% endblock %}
+

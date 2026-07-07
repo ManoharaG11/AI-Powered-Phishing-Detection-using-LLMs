@@ -1,0 +1,35 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}AI Phishing Detector{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <h2>Choose what you want to scan</h2>
+    <p>Separate workflows for email text + headers and for suspicious websites — with a dynamic, modern UI.</p>
+  </div>
+
+  <div class="cards">
+    <a class="card-link email-link" href="{{ url_for('fake_email') }}">
+      <div class="card-link-inner">
+        <h3>Fake Email Detection</h3>
+        <p>Analyze email content + sender signals + IP extraction.</p>
+        <span class="pill">Email</span>
+      </div>
+    </a>
+
+    <a class="card-link website-link" href="{{ url_for('fake_website') }}">
+      <div class="card-link-inner">
+        <h3>Fake Website Detection</h3>
+        <p>Analyze URL patterns + phishing risk score.</p>
+        <span class="pill">Website</span>
+      </div>
+    </a>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script>setMode('email');</script>
+{% endblock %}
+

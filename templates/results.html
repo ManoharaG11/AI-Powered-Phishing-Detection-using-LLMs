@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Result — AI Phishing Detector{% endblock %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Analysis Result</h1>
+    <p style="margin-top: 6px; color: #475569;">Review the “simple” explanation first, then open the advanced details if needed.</p>
+  </div>
+
+
+  <section class="card">
+    <h2>Prediction</h2>
+    <p><strong>Classification:</strong> {{ response.classification }}</p>
+    <p><strong>Risk Score:</strong> {{ (response.probability * 100) | round(2) }}%</p>
+
+    <h3>What this means (simple)</h3>
+    <ul>
+      {% if response.probability >= 0.7 %}
+        <li><strong>High risk:</strong>
+          This looks more like phishing based on the input you provided.
+        </li>
+      {% elif response.probability >= 0.4 %}
+        <li><strong>Medium risk:</strong>
+          Suspicious signals were found. Please verify carefully before you click or enter any info.
+        </li>
+      {% else %}
+        <li><strong>Lower risk:</strong>
+          Fewer suspicious signals were found, but still treat urgent requests with caution.
+        </li>
+      {% endif %}
+    </ul>
+
+
+    <h3>Model notes (advanced)</h3>
+    <pre>{{ response.details | tojson(indent=2) }}</pre>
+  </section>
+
+  <section class="card">
+    <h2>{% if url %}Website analysis (simple){% else %}Email analysis (simple){% endif %}</h2>
+
+    {% if url %}
+      <ul>
+        <li><strong>Input type:</strong> Website URL</li>
+        <li><strong>What we look for:</strong> suspicious URL patterns (for example: risky domain names, unusual redirects, or non-standard link structure).</li>
+        <li><strong>How to use the result:</strong> if the score looks high, do not login or enter payment info—open the official website by typing the address yourself.</li>
+      </ul>
+
+      <h3>Technical model notes (advanced)</h3>
+      <pre>{{ response.details | tojson(indent=2) }}</pre>
+    {% else %}
+      {% set sr = response.sender_report %}
+      <ul>
+        <li><strong>Input type:</strong> Email content</li>
+        <li><strong>Sender email:</strong> {{ sr.sender_email if sr.sender_email else "Not provided" }}</li>
+        <li><strong>Sender domain:</strong> {{ sr.domain if sr.domain else "Not available" }}</li>
+
+        <li>
+          <strong>Blacklist check:</strong>
+          {% if sr.blacklisted %}
+            This domain is in the project’s suspicious list.
+          {% else %}
+            Not found in the project’s blacklist.
+          {% endif %}
+        </li>
+
+        <li>
+          <strong>Does the domain have email routing (MX record)?</strong>
+          {% if sr.mx_record_exists %}
+            Yes, MX records were found.
+          {% else %}
+            Not found (or couldn’t be checked). Some fake senders use domains that don’t receive real mail.
+          {% endif %}
+        </li>
+
+        <li>
+          <strong>Sender name/format warning:</strong>
+          {% if sr.suspicious_local_part %}
+            The part before “@” looks unusual (for example, very short or mostly numbers).
+          {% else %}
+            The sender format looks more normal.
+          {% endif %}
+        </li>
+
+        <li>
+          <strong>IP extracted from email header:</strong>
+          {% if sr.extracted_ip %}
+            Yes. The tool found an IP address in the header.
+          {% else %}
+            No. Either no header was provided, or no IP was detected.
+          {% endif %}
+        </li>
+      </ul>
+
+      <h3>Sender report (advanced)</h3>
+      <pre>{{ response.sender_report | tojson(indent=2) }}</pre>
+
+      {% if response.ip_info %}
+        <h3>IP Lookup (simple)</h3>
+        <ul>
+          <li><strong>IP address:</strong> {{ response.ip_info.ip if response.ip_info.ip else sr.extracted_ip }}</li>
+          <li><strong>Location:</strong> {{ response.ip_info.country if response.ip_info.country else "Unknown" }}</li>
+          <li><strong>ISP/Network:</strong> {{ response.ip_info.org if response.ip_info.org else "Unknown" }}</li>
+        </ul>
+        <h3>IP lookup (advanced)</h3>
+        <pre>{{ response.ip_info | tojson(indent=2) }}</pre>
+      {% endif %}
+    {% endif %}
+  </section>
+
+
+  <a href="{{ url_for('index') }}" class="btn">Run Another</a>
+{% endblock %}
+
+
