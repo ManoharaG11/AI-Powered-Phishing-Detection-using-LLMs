@@ -1,0 +1,8 @@
+flask
+python-dotenv
+pandas
+numpy
+scikit-learn
+matplotlib
+dnspython
+requests
