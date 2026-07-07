@@ -1,44 +1,22 @@
-# 🛡️ AI-Powered Phishing Detection Using Machine Learning
+# 🧠 AI-Powered Phishing Detection using Machine Learning
 
-## 🚀 Overview
-
-AI-Powered Phishing Detection is a web-based cybersecurity application developed using **Python**, **Flask**, and **Machine Learning**. The system helps users identify phishing emails and malicious websites by analyzing email content, URL characteristics, sender information, and optional email headers. It generates a **risk score** along with human-readable explanations, enabling users to better understand potential security threats.
-
-This project demonstrates the practical application of Machine Learning in cybersecurity and provides an intuitive web interface for real-time phishing analysis.
+A web-based cybersecurity application that leverages **Machine Learning (ML)** and **Natural Language Processing (NLP)** to detect phishing attempts through suspicious emails and website URLs. The system analyzes user inputs, predicts potential phishing attacks, and provides a risk score with clear explanations to help users make informed security decisions.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-### 📧 Phishing Email Detection
-- Detects phishing emails using Machine Learning.
-- Analyzes email content for suspicious patterns.
-- Calculates a phishing risk score.
-- Provides easy-to-understand security explanations.
-
-### 🌐 Malicious Website Detection
-- Detects fake or malicious websites using URL analysis.
-- Extracts URL-based features for prediction.
-- Displays website-specific threat analysis.
-
-### 👤 Sender Verification
-- Performs basic sender validation.
-- Supports sender blacklist checking.
-- Detects suspicious sender formats.
-
-### 🌍 IP Address Analysis
-- Extracts sender IP from email headers (optional).
-- Supports IP geolocation lookup.
-- Displays location information when available.
-
-### 📊 Interactive Dashboard
-- Clean and responsive Flask web interface.
-- Risk score visualization.
-- User-friendly result pages.
+- 📧 Detect phishing emails using Machine Learning
+- 🌐 Identify malicious or fake website URLs
+- 👤 Perform basic sender verification and blacklist checking
+- 🌍 Extract IP addresses from email headers (optional)
+- 📊 Display risk score with prediction results
+- 💡 Provide human-readable explanations for every prediction
+- ⚡ Fast and responsive Flask-based web interface
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 - Python
 - Flask
@@ -48,15 +26,14 @@ This project demonstrates the practical application of Machine Learning in cyber
 - HTML
 - CSS
 - JavaScript
-- Machine Learning
-- Pickle
+- Pickle (Model Serialization)
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-PhishingProject/
+AI-Powered-Phishing-Detection/
 │
 ├── app.py
 ├── train.py
@@ -71,7 +48,8 @@ PhishingProject/
 │   └── vectorizer.pkl
 │
 ├── results/
-│   └── evaluation outputs
+│   ├── metrics.json
+│   └── confusion_matrix.png
 │
 ├── utils/
 │   ├── model_utils.py
@@ -88,46 +66,52 @@ PhishingProject/
 │   ├── results.html
 │   └── error.html
 │
-└── static/
-    └── css/
-        └── style.css
+├── static/
+│   └── css/
+│       └── style.css
+│
+└── README.md
 ```
 
 ---
 
 ## ⚙️ Installation
 
-### 1. Clone the Repository
+### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/AI-Powered-Phishing-Detection.git
+git clone https://github.com/your-username/AI-Powered-Phishing-Detection.git
 ```
 
-### 2. Navigate to the Project Folder
+### Navigate to the Project Folder
 
 ```bash
 cd AI-Powered-Phishing-Detection
 ```
 
-### 3. Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Train the Machine Learning Model
+---
+
+## ▶️ Running the Project
+
+### Train the Machine Learning Model
 
 ```bash
 python train.py
 ```
 
-### 5. Run the Application
+### Start the Flask Application
 
 ```bash
 python app.py
 ```
 
-The application will start at:
+Open your browser and visit:
 
 ```
 http://127.0.0.1:5000
@@ -135,74 +119,58 @@ http://127.0.0.1:5000
 
 ---
 
-## 🖥️ How It Works
+## 🔍 Detection Modules
 
-### 📧 Email Analysis
+### 📧 Email Phishing Detection
 
-The application accepts:
+- Analyzes email content using a trained Machine Learning model.
+- Detects suspicious text patterns commonly found in phishing emails.
+- Performs sender verification and blacklist checking.
+- Supports optional IP extraction from email headers.
 
-- Email body
-- Sender email (optional)
-- Raw email headers (optional)
+### 🌐 Website Phishing Detection
 
-The system:
-
-- Preprocesses the email text
-- Predicts phishing probability
-- Validates sender information
-- Extracts sender IP (if available)
-- Displays the overall risk score
+- Accepts suspicious website URLs.
+- Extracts URL-based features.
+- Predicts whether the website is legitimate or malicious.
+- Provides website-specific explanations for the prediction.
 
 ---
 
-### 🌐 Website Analysis
+## 📊 Prediction Output
 
-The application accepts a website URL.
+The application displays:
 
-The system:
-
-- Extracts URL features
-- Uses the trained ML model for prediction
-- Calculates phishing probability
-- Displays website-specific security explanations
-
----
-
-## 📊 Output
-
-The application provides:
-
-- ✅ Risk Score (%)
-- ✅ Prediction (Safe / Phishing)
-- ✅ Human-readable Explanation
-- ✅ Sender Validation Results
-- ✅ Website Analysis Results
-- ✅ IP Location Information (Optional)
+- ✅ Prediction Result
+- 📈 Risk Score
+- 📧 Email or 🌐 Website Analysis
+- 💡 Explanation of the prediction
+- 🔍 Additional debugging information (optional)
 
 ---
 
-## 📌 Future Enhancements
+## 📌 Notes
 
-- Real-time email scanning
-- Browser extension integration
-- Deep Learning (LSTM/BERT) models
-- Live threat intelligence feeds
-- Multi-language phishing detection
-- User authentication
-- Detection history dashboard
-- Email attachment scanning
+- Some features such as IP lookup require optional email headers.
+- This project is intended for educational and research purposes.
+- Machine Learning predictions should be used as an assistance tool and not as the sole basis for cybersecurity decisions.
 
 ---
 
-## ⚠️ Disclaimer
+## 🔮 Future Enhancements
 
-This project is intended for **educational and research purposes only**. It should not be used as the sole security solution for protecting production systems or making critical security decisions.
+- Browser Extension for Real-Time Phishing Detection
+- Deep Learning-based Email Classification
+- QR Code Phishing Detection
+- Multi-language Email Analysis
+- Live Threat Intelligence Integration
+- Dashboard for Security Analytics
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **Apache 2.0 License**.
+This project is licensed under the **Apache License 2.0**.
 
 ---
 
