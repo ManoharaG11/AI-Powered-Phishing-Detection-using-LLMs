@@ -1,33 +1,61 @@
-# 🧠 AI-Powered Phishing Detection (Flask + ML)
+# 🛡️ AI-Powered Phishing Detection Using Machine Learning
 
-A hybrid cybersecurity system that detects:
-- **Phishing emails** (email body text)
-- **Malicious/fake websites** (URL features)
-- **Suspicious senders** (basic sender checks + blacklist)
-- **IP extraction** from email headers (optional)
+## 🚀 Overview
 
-This project provides a simple web UI (Flask) with a **risk score** and **human-readable explanations**.
+AI-Powered Phishing Detection is a web-based cybersecurity application developed using **Python**, **Flask**, and **Machine Learning**. The system helps users identify phishing emails and malicious websites by analyzing email content, URL characteristics, sender information, and optional email headers. It generates a **risk score** along with human-readable explanations, enabling users to better understand potential security threats.
+
+This project demonstrates the practical application of Machine Learning in cybersecurity and provides an intuitive web interface for real-time phishing analysis.
 
 ---
 
-## ✅ What the app does
+## ✨ Features
 
-### 1) Fake Email Detection
-Input: **email text** (+ optional sender + raw headers)
-- ML model analyzes the email text.
-- Sender checks can flag suspicious sender format and blacklist.
-- If you provide raw headers, the app may extract an IP and show a geolocation lookup.
+### 📧 Phishing Email Detection
+- Detects phishing emails using Machine Learning.
+- Analyzes email content for suspicious patterns.
+- Calculates a phishing risk score.
+- Provides easy-to-understand security explanations.
 
-### 2) Fake Website Detection
-Input: **a suspicious URL**
-- ML model analyzes the URL/URL patterns.
-- The UI shows **website-focused** explanations (not email/sender-focused).
+### 🌐 Malicious Website Detection
+- Detects fake or malicious websites using URL analysis.
+- Extracts URL-based features for prediction.
+- Displays website-specific threat analysis.
+
+### 👤 Sender Verification
+- Performs basic sender validation.
+- Supports sender blacklist checking.
+- Detects suspicious sender formats.
+
+### 🌍 IP Address Analysis
+- Extracts sender IP from email headers (optional).
+- Supports IP geolocation lookup.
+- Displays location information when available.
+
+### 📊 Interactive Dashboard
+- Clean and responsive Flask web interface.
+- Risk score visualization.
+- User-friendly result pages.
 
 ---
 
-## 📁 Project structure
+## 🛠️ Technologies Used
 
-```
+- Python
+- Flask
+- Scikit-learn
+- Pandas
+- NumPy
+- HTML
+- CSS
+- JavaScript
+- Machine Learning
+- Pickle
+
+---
+
+## 📁 Project Structure
+
+```text
 PhishingProject/
 │
 ├── app.py
@@ -36,15 +64,14 @@ PhishingProject/
 │
 ├── data/
 │   ├── phishing_dataset.csv
-│   ├── sender_list.csv
-│   └── phishing_dataset.csv
+│   └── sender_list.csv
 │
 ├── model/
 │   ├── phishing_model.pkl
 │   └── vectorizer.pkl
 │
 ├── results/
-│   └── (evaluation outputs: metrics.json, confusion matrix, etc.)
+│   └── evaluation outputs
 │
 ├── utils/
 │   ├── model_utils.py
@@ -62,50 +89,127 @@ PhishingProject/
 │   └── error.html
 │
 └── static/
-    └── css/style.css
+    └── css/
+        └── style.css
 ```
 
 ---
 
-## ▶️ Run the project
+## ⚙️ Installation
 
-### 1) Install dependencies
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/AI-Powered-Phishing-Detection.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd AI-Powered-Phishing-Detection
+```
+
+### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2) Train the model (first time)
+### 4. Train the Machine Learning Model
+
 ```bash
 python train.py
 ```
 
-### 3) Start the Flask app
+### 5. Run the Application
+
 ```bash
 python app.py
 ```
 
-Open:
-- **http://127.0.0.1:5000**
+The application will start at:
+
+```
+http://127.0.0.1:5000
+```
 
 ---
 
-## 🧾 How results are shown
+## 🖥️ How It Works
 
-On the results page:
-- **Risk score** is shown as a percentage.
-- The UI provides a **simple explanation**:
-  - **Email mode** → sender-focused explanation
-  - **Website mode** → URL/website-focused explanation
-- **Advanced details** are still available (JSON) for debugging/testing.
+### 📧 Email Analysis
+
+The application accepts:
+
+- Email body
+- Sender email (optional)
+- Raw email headers (optional)
+
+The system:
+
+- Preprocesses the email text
+- Predicts phishing probability
+- Validates sender information
+- Extracts sender IP (if available)
+- Displays the overall risk score
 
 ---
 
-## 📌 Notes
-- Some sender/IP checks depend on whether you provide optional inputs (like raw headers).
-- This tool is for educational/demo use and should not be the only security decision in real systems.
+### 🌐 Website Analysis
+
+The application accepts a website URL.
+
+The system:
+
+- Extracts URL features
+- Uses the trained ML model for prediction
+- Calculates phishing probability
+- Displays website-specific security explanations
+
+---
+
+## 📊 Output
+
+The application provides:
+
+- ✅ Risk Score (%)
+- ✅ Prediction (Safe / Phishing)
+- ✅ Human-readable Explanation
+- ✅ Sender Validation Results
+- ✅ Website Analysis Results
+- ✅ IP Location Information (Optional)
+
+---
+
+## 📌 Future Enhancements
+
+- Real-time email scanning
+- Browser extension integration
+- Deep Learning (LSTM/BERT) models
+- Live threat intelligence feeds
+- Multi-language phishing detection
+- User authentication
+- Detection history dashboard
+- Email attachment scanning
+
+---
+
+## ⚠️ Disclaimer
+
+This project is intended for **educational and research purposes only**. It should not be used as the sole security solution for protecting production systems or making critical security decisions.
+
+---
+
+## 📄 License
+
+This project is licensed under the **Apache 2.0 License**.
 
 ---
 
 ## 👨‍💻 Developed By
-- G Manohara
 
+**G Manohara**
+
+---
+
+⭐ If you found this project useful, consider giving it a **Star** on GitHub!
